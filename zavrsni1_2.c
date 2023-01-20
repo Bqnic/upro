@@ -6,6 +6,8 @@ typedef struct {
    double y;
 } tocka_t;
 
+//gornji dio koda nije potrebno pisat u edgar
+
 tocka_t *pokNaNajblizuTocku(tocka_t *arr, int n){
 
     double min = sqrt(pow(arr[0].x, 2) + pow(arr[0].y, 2)), d;
