@@ -10,6 +10,7 @@ _Bool txt2bin(char *inputFile, char *outputFile){
     struct record kod;
 
     while(fscanf(text, "%2d%3d%3d", &kod.code, &kod.x, &kod.y) == 3){
+        fseek(bin, (long)(kod.code - 1) * sizeof(kod), SEEK_SET);
         fwrite(&kod, sizeof(kod), 1, bin);
     }
 
