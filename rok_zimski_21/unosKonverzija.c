@@ -1,36 +1,19 @@
-int unosKonverzija (char *niz, int *dulj){
-
-    int n = 0;
-    char arr[10 + 1];
-
-    while (arr[n - 1] != '!' && n <= 10){
-        scanf("%c", &arr[n]);
-        n++;
-    }
-
-    n--;
-    arr[n] = '\0';
-
-    int converted = 0;
-
-    for (int i = 0; i < n; i++){
-        if (arr[i] >= 'A' && arr[i] <= 'Z')
-            arr[i] += 32;
-
-        else if (arr[i] >= '0' && arr[i] <= '9'){
-            arr[i] = '?';
-            converted++;
+int unosKonverzija (char *str, int *length) {
+    *length = 0;
+    int number_of_digits = 0;
+    for (int i = 0; i < 10; ++i) {
+        char c = getchar();
+        if (c == '!') { 
+            break;
+        } else if (isupper(c)) { 
+            c = tolower(c);
+        } else if (isdigit(c)) { 
+            c = '?'; 
+            ++number_of_digits;
         }
+        str[i] = c;
+        ++*length;
     }
-
-    *dulj = n;
-    n = 0;
-    while (arr[n] != '\0'){
-        niz[n] = arr[n];
-        n++;
-    }
-
-    niz[n] = '\0';
-
-    return converted;
+    str[*length] = '\0';
+    return number_of_digits;
 }
